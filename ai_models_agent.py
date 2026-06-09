@@ -35,6 +35,8 @@ def generate_models_json():
     - contextValue: number (raw context token limit as number, e.g. 200000, 128000, 2000000, 1000000)
     - primaryStrength: string (e.g. "Coding & Reasoning", "Speed & Tool Integration", "Repository Ingestion", "Logical Reasoning & Cost", "On-Premise Flagship", "Deep Autonomous Tasks", "Reasoning & Coding", "Multilingual Efficiency")
     - sweBench: number (SWE-bench verified coding score as percentage from 0 to 100. Use actual or estimated values: GPT-5.5: 58.0, Claude 3.5 Sonnet: 49.0, DeepSeek-R1: 48.7, DeepSeek-V3: 42.0, GPT-4o: 38.8, Claude 4.8 Opus: 35.0, Gemini 1.5 Pro: 27.0, Llama 3.1 405B: 23.0, Qwen 2.5 72B: 21.0, Mistral Large 2: 20.0)
+    - gpqa: number (GPQA Diamond reasoning score as percentage from 0 to 100. Use actual or estimated values: GPT-5.5: 75.0, DeepSeek-R1: 71.0, DeepSeek-V3: 59.1, Claude 3.5 Sonnet: 65.0, GPT-4o: 49.9, Claude 4.8 Opus: 55.0, Gemini 1.5 Pro: 46.2, Llama 3.1 405B: 51.1, Qwen 2.5 72B: 45.0, Mistral Large 2: 38.0)
+    - humanEval: number (HumanEval Python coding score as percentage from 0 to 100. Use actual or estimated values: GPT-5.5: 95.0, DeepSeek-R1: 92.8, Claude 3.5 Sonnet: 92.0, GPT-4o: 90.2, Llama 3.1 405B: 89.0, Claude 4.8 Opus: 88.0, Qwen 2.5 72B: 86.6, Gemini 1.5 Pro: 84.1, DeepSeek-V3: 82.6, Mistral Large 2: 73.0)
     - costPerMillion: number (blended input/output price in dollars per 1 million tokens, e.g. DeepSeek-V3: 0.20, Qwen 2.5 72B: 0.40, DeepSeek-R1: 0.55, Llama 3.1 405B: 2.66, Mistral Large 2: 3.00, Gemini 1.5 Pro: 3.50, GPT-4o: 4.00, Claude 3.5 Sonnet: 4.50, GPT-5.5: 6.00, Claude 4.8 Opus: 15.00)
     - costLabel: string (e.g. "$0.20", "$4.50", "$15.00")
     - color: string (Tailwind CSS gradient color classes, choose from:
