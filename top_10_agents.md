@@ -1,39 +1,39 @@
 ## Devin (Cognition AI)
 https://www.cognition.ai/blog/devin
-The world's first fully autonomous AI software engineer, capable of planning, coding, executing, and debugging entire projects from a single prompt within a secure sandbox, signifying a leap towards fully agentic development.
+The world's first fully autonomous AI software engineer, capable of planning, coding, executing, and debugging entire projects from a single prompt within a secure sandbox.
 
 ## CrewAI
-https://www.crewai.com
-A powerful multi-agent framework that enables developers to define, assign roles, and orchestrate autonomous AI agents to collaborate on complex tasks, fostering specialized expertise and seamless task execution through goal-driven communication.
+https://www.crewai.com/
+A powerful multi-agent framework designed to orchestrate intelligent agents that play specific roles, share goals, and collaborate to execute complex tasks, leveraging advanced prompting techniques.
 
 ## LangGraph (LangChain)
-https://python.langchain.com/v0.1/docs/langgraph/
-An extension of LangChain that introduces a stateful, cyclic graph architecture, allowing developers to build highly interactive and iterative AI agents and multi-agent systems with explicit control over execution flow and state management for complex reasoning.
+https://python.langchain.com/v0.2/docs/langgraph/
+An extension of LangChain that enables the creation of stateful, cyclic graphs of LLM calls, tools, and human interactions, facilitating the development of robust, multi-step autonomous agents.
 
 ## Microsoft AutoGen
 https://microsoft.github.io/autogen/
-A flexible framework for building multi-agent systems that can communicate and collaborate to solve complex tasks, featuring customizable agents, tool integration, and natural language-driven group chats for robust, automated problem-solving.
+A framework that allows for the development of multi-agent conversations, where customizable and conversable agents can autonomously communicate and collaborate to solve tasks.
 
 ## Anthropic Computer Use
-https://docs.anthropic.com/en/docs/tool-use
-Anthropic's capability that empowers its AI models, particularly Claude, to safely and effectively interact with external tools, APIs, and computer environments, enabling advanced automation and complex task execution through structured function calls and secure sandboxing.
+https://docs.anthropic.com/claude/docs/tool-use
+Refers to Anthropic's capability that empowers its Claude models to interact with external tools and APIs, enabling them to perform actions, retrieve real-time information, and integrate with external systems to complete complex tasks.
 
 ## Smolagents (Hugging Face)
 https://huggingface.co/blog/smol-developer
-A series of lightweight, highly efficient AI agents designed for specific, focused tasks, exemplified by Smol-Developer which excels at generating entire codebases from a simple prompt, demonstrating high capability with minimal overhead and rapid iteration.
+A concept and framework focused on creating highly efficient, minimalist agents that leverage large language models to self-prompt and iteratively build complex outputs like code from simple, high-level instructions.
 
 ## OpenAI Operator
 https://platform.openai.com/docs/assistants/overview
-OpenAI's advanced agent framework built upon its models and Assistants API, enabling the creation of autonomous 'operators' capable of understanding complex instructions, utilizing external tools, managing conversation history, and executing multi-step workflows.
+Represents the agentic capabilities of OpenAI's models, primarily through the Assistants API, enabling developers to build AI assistants that can autonomously manage threads, use tools, and execute multi-step instructions within an integrated environment.
 
 ## Multi-On
 https://www.multi-on.com/
-An autonomous AI agent designed to operate across web applications and the internet, capable of understanding and executing complex tasks by interacting with browsers, navigating websites, and performing actions like a human user, through sophisticated perception and control.
+An autonomous AI agent designed to interact with the web, capable of browsing, navigating, and performing complex actions on websites to accomplish tasks, effectively acting as an automated web assistant.
 
 ## Agency Swarm
-https://www.agencyswarm.com/
-A framework for building and deploying swarms of autonomous AI agents designed to collaborate on complex enterprise workflows, enabling developers to define intricate agent hierarchies and task distributions for efficient, scalable problem-solving.
+https://github.com/VicktorC/agency-swarm
+A framework for building, deploying, and managing autonomous multi-agent systems, enabling agents to collaborate through structured communication and shared objectives to achieve complex outcomes.
 
 ## Camel-AI
 https://www.camel-ai.org/
-A role-playing multi-agent framework that facilitates autonomous communication and collaboration between AI agents, enabling them to simulate human-like interactions to complete diverse tasks, from coding to content generation, through predefined roles and goals.
+A comprehensive open-source framework for role-playing autonomous agents, facilitating the study of emergent behaviors and enabling agents to collaborate on tasks through conversational interactions and predefined roles.
