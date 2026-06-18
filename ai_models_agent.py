@@ -1,5 +1,7 @@
 import os
 import json
+import time
+import datetime
 from google import genai
 from google.genai import types
 
@@ -53,13 +55,27 @@ def generate_models_json():
     """
 
     print("Generating models intelligence data...")
-    response = client.models.generate_content(
-        model='gemini-2.5-flash',
-        contents=prompt,
-        config=types.GenerateContentConfig(
-            response_mime_type="application/json"
-        )
-    )
+    max_retries = 5
+    retry_delay = 5
+    response = None
+    
+    for attempt in range(1, max_retries + 1):
+        try:
+            response = client.models.generate_content(
+                model='gemini-2.5-flash',
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    response_mime_type="application/json"
+                )
+            )
+            break
+        except Exception as e:
+            print(f"Attempt {attempt}/{max_retries} failed with error: {str(e)}")
+            if attempt == max_retries:
+                raise e
+            print(f"Retrying in {retry_delay} seconds...")
+            time.sleep(retry_delay)
+            retry_delay *= 2
 
     # 3. Write data to a local file in the workspace
     output_path = os.path.join(os.path.dirname(__file__), "top_10_models.json")
@@ -67,6 +83,11 @@ def generate_models_json():
     # Verify we got valid JSON back
     try:
         data = json.loads(response.text)
+        
+        # Inject last_updated timestamp to the first model object to force Git updates
+        if isinstance(data, list) and len(data) > 0:
+            data[0]["last_updated"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+            
         with open(output_path, "w") as f:
             json.dump(data, f, indent=4)
         print(f"Successfully wrote top 10 models intelligence to: {output_path}")
@@ -74,6 +95,8 @@ def generate_models_json():
         print("ERROR: Gemini returned invalid JSON. Saving raw text to error log.")
         with open(os.path.join(os.path.dirname(__file__), "error.log"), "w") as f:
             f.write(response.text)
+        # Raise error to trigger runner failure on bad JSON
+        raise ValueError("Invalid JSON returned by Gemini API.")
 
 if __name__ == "__main__":
     generate_models_json()
