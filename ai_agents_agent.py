@@ -10,27 +10,27 @@ def generate_agents_markdown():
     
     prompt = """
     Create a clean markdown list of the top 10 AI agents, multi-agent frameworks, and autonomous software platforms driving development in 2026.
-    Include these exact leading agents and frameworks:
-    1. Devin (Cognition AI)
-    2. CrewAI
-    3. LangGraph (LangChain)
-    4. Microsoft AutoGen
-    5. Anthropic Computer Use
-    6. Smolagents (Hugging Face)
-    7. OpenAI Operator
-    8. Multi-On
-    9. Agency Swarm
-    10. Camel-AI
+    Include these exact leading agents, frameworks, and their exact URLs:
+    1. Devin (Cognition AI) - URL: https://cognition.com/blog/introducing-devin
+    2. CrewAI - URL: https://www.crewai.com/
+    3. LangGraph (LangChain) - URL: https://langchain.com/langgraph
+    4. Microsoft AutoGen - URL: https://github.com/microsoft/autogen
+    5. Anthropic Computer Use - URL: https://www.anthropic.com/news/3-5-models-and-computer-use
+    6. Smolagents (Hugging Face) - URL: https://github.com/huggingface/smolagents
+    7. OpenAI Operator - URL: https://openai.com/index/introducing-operator/
+    8. Multi-On - URL: https://multion.ai
+    9. Agency Swarm - URL: https://github.com/VRSEN/agency-swarm
+    10. Camel-AI - URL: https://github.com/camel-ai/camel
     
     Format the output EXACTLY like this for each entry, with NO bullet points, no extra bolding, and no markdown code-block wrapping the response.
     Example entry:
     ## Devin (Cognition AI)
-    https://www.cognition.ai/blog/devin
+    https://cognition.com/blog/introducing-devin
     The world's first fully autonomous AI software engineer, capable of planning, coding, executing, and debugging entire projects from a single prompt within a secure sandbox.
     
     Ensure each agent block has:
     - Line 1: `## [Agent/Framework Name]`
-    - Line 2: The exact URL (must be valid, no markdown link syntax, just plain text URL)
+    - Line 2: The exact URL specified above (do not use any other URL, do not use markdown link syntax, just plain text URL)
     - Line 3: A concise single-paragraph description explaining its agentic architecture, tool integration, or capabilities.
     
     Return ONLY the raw markdown text. Do not wrap it in ```markdown ``` code blocks. Do not add any introduction or conclusion text.
