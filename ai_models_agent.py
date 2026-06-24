@@ -55,27 +55,45 @@ def generate_models_json():
     """
 
     print("Generating models intelligence data...")
-    max_retries = 5
+    max_retries = 3
     retry_delay = 5
     response = None
-    
-    for attempt in range(1, max_retries + 1):
-        try:
-            response = client.models.generate_content(
-                model='gemini-2.5-flash',
-                contents=prompt,
-                config=types.GenerateContentConfig(
-                    response_mime_type="application/json"
+    last_exception = None
+
+    models_to_try = [
+        "gemini-2.5-flash",
+        "gemini-2.5-flash-lite",
+        "gemini-flash-lite-latest",
+        "gemini-flash-latest"
+    ]
+
+    for model_name in models_to_try:
+        print(f"Attempting model: {model_name}...")
+        for attempt in range(1, max_retries + 1):
+            try:
+                response = client.models.generate_content(
+                    model=model_name,
+                    contents=prompt,
+                    config=types.GenerateContentConfig(
+                        response_mime_type="application/json"
+                    )
                 )
-            )
+                break
+            except Exception as e:
+                print(f"Model {model_name} (Attempt {attempt}/{max_retries}) failed with error: {str(e)}")
+                last_exception = e
+                if attempt == max_retries:
+                    break
+                print(f"Retrying in {retry_delay} seconds...")
+                time.sleep(retry_delay)
+                
+        if response:
+            print(f"SUCCESS: Generated content using model '{model_name}'.")
             break
-        except Exception as e:
-            print(f"Attempt {attempt}/{max_retries} failed with error: {str(e)}")
-            if attempt == max_retries:
-                raise e
-            print(f"Retrying in {retry_delay} seconds...")
-            time.sleep(retry_delay)
-            retry_delay *= 2
+
+    if not response:
+        print("CRITICAL: All models and fallbacks failed to generate content.")
+        raise last_exception
 
     # 3. Write data to a local file in the workspace
     output_path = os.path.join(os.path.dirname(__file__), "top_10_models.json")

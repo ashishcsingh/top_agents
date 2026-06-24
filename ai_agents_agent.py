@@ -36,11 +36,44 @@ def generate_agents_markdown():
     Return ONLY the raw markdown text. Do not wrap it in ```markdown ``` code blocks. Do not add any introduction or conclusion text.
     """
 
+    import time
     print("Generating agents registry data...")
-    response = client.models.generate_content(
-        model='gemini-2.5-flash',
-        contents=prompt,
-    )
+    max_retries = 3
+    retry_delay = 5
+    response = None
+    last_exception = None
+
+    models_to_try = [
+        "gemini-2.5-flash",
+        "gemini-2.5-flash-lite",
+        "gemini-flash-lite-latest",
+        "gemini-flash-latest"
+    ]
+
+    for model_name in models_to_try:
+        print(f"Attempting model: {model_name}...")
+        for attempt in range(1, max_retries + 1):
+            try:
+                response = client.models.generate_content(
+                    model=model_name,
+                    contents=prompt,
+                )
+                break
+            except Exception as e:
+                print(f"Model {model_name} (Attempt {attempt}/{max_retries}) failed with error: {str(e)}")
+                last_exception = e
+                if attempt == max_retries:
+                    break
+                print(f"Retrying in {retry_delay} seconds...")
+                time.sleep(retry_delay)
+                
+        if response:
+            print(f"SUCCESS: Generated content using model '{model_name}'.")
+            break
+
+    if not response:
+        print("CRITICAL: All models and fallbacks failed to generate content.")
+        raise last_exception
 
     output_path = os.path.join(os.path.dirname(__file__), "top_10_agents.md")
     
